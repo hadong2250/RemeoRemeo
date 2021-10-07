@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head></head><body>
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-storage.js"></script>
+  
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDVLtxv_0ld_WYY9ZaHKgV-oZf0N4zdgcU",
+    authDomain: "tbimhdb.firebaseapp.com",
+    databaseURL: "https://tbimhdb-default-rtdb.firebaseio.com",
+    projectId: "tbimhdb",
+    storageBucket: "tbimhdb.appspot.com"
+    // messagingSenderId: "851XXXXXXXX7",
+    // appId: "1:851XXXXXXXX7:web:6fXXXXXXXXXX866"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+  datos =  window.AppInventor.getWebViewString(); // Input.
+  var get_url_file = datos;
+  var storage = firebase.storage().ref(get_url_file);
+  storage.getDownloadURL().then(function(url) { window.AppInventor.setWebViewString("" + url); })  // Output.
+                                         .catch(function(error) {alert("Error encountered."); });
+</script>
+</body>
+</html>
